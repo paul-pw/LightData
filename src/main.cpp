@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <LightData.hpp>
+#include <LightData.h>
 
 void setup() {
   // put your setup code here, to run once:
