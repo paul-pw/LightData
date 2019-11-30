@@ -1,64 +1,69 @@
 #pragma once
 
+#include "LDStream.h"
+#define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0]))
+
 namespace LD{
 
     /* for now, i'm not gonna make two seperate classes for sending and recieving, since in the future I want this to be able to do both in one class on one Arduino*/
-    class LightData
+    /*LightData class for software protocoll implementation*/
+    class LightData : public LDStream
     {
     public:
-        enum class Flags
-        {
-            /*with the flag Lazy, it checks the incomming value every interval(set by checkSpeed) even if there is an input from the sending device*/
-            Lazy=0,
-            /*with the flag SuperSpeed, it checks the incomming value every interval(set by checkSpeed) but if there is an input from the sending device,
-            the incomming value can get checked much more often (set by transmitSpeed)*/
-            SuperSpeed=1
-
-            /*other flags, such as an encryption standart or something with parody bits can still be added*/
-        };
-
 
     /*setup functions*/
 
-        LightData():
+        LightData(long Speed):
             recievePin(0),
+            recieve(false),
             transmitPin(0),
-            checkSpeed(0),
-            transmitSpeed(0),
-            Method(Flags::Lazy),
+            transmit(false),
+            Speed(Speed),
             _issession(false){};
 
-        LightData(unsigned char recievePin,unsigned char transmitPin, long checkSpeed):
+
+        LightData(unsigned char recievePin,unsigned char transmitPin, long Speed):
             recievePin(recievePin),
+            recieve(true),
             transmitPin(transmitPin),
-            checkSpeed(checkSpeed),
-            transmitSpeed(0),
-            Method(Flags::Lazy),
+            transmit(true),
+            Speed(Speed),
             _issession(false){};
 
-        LightData(unsigned char recievePin,unsigned char transmitPin, long checkSpeed, long transmitSpeed):
-            recievePin(recievePin),
-            transmitPin(transmitPin),
-            checkSpeed(checkSpeed),
-            transmitSpeed(transmitSpeed),
-            Method(Flags::SuperSpeed),
-            _issession(false){};
 
-        ~LightData();
-
-        void setrecievePin(unsigned char recievePin);
-        void settransmitPin(unsigned char transmitPin);
+        void setrecieve(unsigned char recievePin);
+        void settransmit(unsigned char transmitPin);
         void setPins(unsigned char transmitPin,unsigned char recievePin);
 
-        void setSpeed(long checkSpeed);
-        void setSpeed(long checkSpeed, long transmitSpeed);
 
-        void setMethod(Flags Method);
 
     /*sending Functions*/
 
-        template<typename T> //Typename is that this function accepts any variable type (thus creating a new function for every new type)
-        void send(T value);
+        //this function is written so that it can accept every data type needed that this function accepts any variable type (thus creating a new function for every new type)
+        void send(char value);
+        void send(unsigned char value);
+        void send(short int value);
+        void send(unsigned short int value);
+        void send(int value);
+        void send(unsigned int value);
+        void send(long long int value);
+        void send(unsigned long long int value);
+        void send(float value);
+        void send(double value);
+        void send(long double value);
+        //or arrays like this
+        void send(char value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(unsigned char value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(short int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(unsigned short int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(unsigned int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(long long int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(unsigned long long int value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(float value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(double value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+        void send(long double value[],unsigned int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
+
 
         void session_start(/*some kind of input needs to go in here*/); /*this needs to get some kind of struct or something, so that it knows all the nescesary variables that get send every so often*/
         void session_update(); /*when this is called all session variables are forced to get updated, 
@@ -79,10 +84,14 @@ namespace LD{
 
     protected:
         unsigned char recievePin;
+        bool recieve;
         unsigned char transmitPin;
-        long checkSpeed;
-        long transmitSpeed;
-        Flags Method;
+        bool transmit;
+        long Speed;
         bool _issession;
+        
+        void processData(char Data);
     };
+
+
 }
