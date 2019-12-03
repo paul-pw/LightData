@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LDStream.h"
+#include "Stream/LDStream.h"
 #define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0]))
 
 namespace LD{
@@ -14,28 +14,17 @@ namespace LD{
     /*setup functions*/
 
         LightData(long Speed):
-            recievePin(0),
-            recieve(false),
-            transmitPin(0),
-            transmit(false),
-            Speed(Speed),
+            LDStream(Speed),
             _issession(false){};
 
 
         LightData(unsigned char recievePin,unsigned char transmitPin, long Speed):
-            recievePin(recievePin),
-            recieve(true),
-            transmitPin(transmitPin),
-            transmit(true),
-            Speed(Speed),
+            LDStream(recievePin,transmitPin,Speed),
             _issession(false){};
 
-
-        void setrecieve(unsigned char recievePin);
-        void settransmit(unsigned char transmitPin);
-        void setPins(unsigned char transmitPin,unsigned char recievePin);
-
-
+        LightData(unsigned char recievePin,unsigned char transmitPin):
+            LDStream(recievePin,transmitPin),
+            _issession(false){};
 
     /*sending Functions*/
 
@@ -83,13 +72,7 @@ namespace LD{
 
 
     protected:
-        unsigned char recievePin;
-        bool recieve;
-        unsigned char transmitPin;
-        bool transmit;
-        long Speed;
         bool _issession;
-        
         void processData(char Data);
     };
 

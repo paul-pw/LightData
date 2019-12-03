@@ -30,7 +30,7 @@ namespace LD
     {
         char binary[TYPE_LEN+ISARRAY_LEN+sizeof(value)];
         binary[0] = (char)types::_char;
-        binary[1] = 'N';
+        binary[1] = ISNOTARRAY;
         binary[2] = value;
 
     }
