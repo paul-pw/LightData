@@ -5,6 +5,7 @@ LD::LightData ld(10/*Recieve Pin*/,11/*transmit Pin*/, 1250/*transmit speed*/);
 
 void setup() {
   // put your setup code here, to run once:
+  ld.beginn();
 }
 
 void loop() {

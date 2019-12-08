@@ -14,21 +14,24 @@ namespace LD{
             recieve(false),
             transmitPin(0),
             transmit(false),
-            Speed(Speed){};
+            Speed(Speed),
+            buffer(0){};
         
         LDStream(unsigned char recievePin,unsigned char transmitPin, long Speed):
             recievePin(recievePin),
             recieve(true),
             transmitPin(transmitPin),
             transmit(true),
-            Speed(Speed){};
+            Speed(Speed),
+            buffer(0){};
 
         LDStream(unsigned char recievePin,unsigned char transmitPin):
             recievePin(recievePin),
             recieve(true),
             transmitPin(transmitPin),
             transmit(true),
-            Speed(0){};
+            Speed(0),
+            buffer(0){};
 
         void beginn();
         void beginn(long Speed);
@@ -46,13 +49,22 @@ namespace LD{
 
 
     protected:
+        static LDStream *instance;
         unsigned char recievePin;
         bool recieve;
         unsigned char transmitPin;
         bool transmit;
         long Speed;
+        /*variables needed for reciving*/
+        volatile char buffer;
+        volatile char data;
+        volatile unsigned long oldTime;
 
-        virtual void processData(char Data)=0;
+        static void ISRfunc();
+
+        void dataStream();
+
+        virtual void processData(char data)=0;
     /*virtual because we need the inheriting classes to have a definition for this function
     Diese function wird in der derived class ('LightData') deffiniert und wird immer gecalled wenn ein neues byte an input daten vorhanden ist*/
     };

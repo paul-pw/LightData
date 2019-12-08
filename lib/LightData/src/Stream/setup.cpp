@@ -1,4 +1,5 @@
 #include "LDStream.h"
+#include <Arduino.h>
 
 namespace LD
 {
@@ -24,11 +25,25 @@ namespace LD
     }
 
     void LDStream::beginn(){
-
+        if (LDStream::recieve)
+        {
+            pinMode(LDStream::recievePin, CHANGE);
+            attachInterrupt(digitalPinToInterrupt(LDStream::recievePin), LDStream::ISRfunc , CHANGE);
+        }
+        /* TODO: add beginn for transmit */
     }
 
     void LDStream::beginn(long Speed){
         LDStream::Speed = Speed;
+        if (LDStream::recieve)
+        {
+            pinMode(LDStream::recievePin, CHANGE);
+            attachInterrupt(digitalPinToInterrupt(LDStream::recievePin), LDStream::ISRfunc , CHANGE);
+        }/* TODO: add beginn for transmit */
+    }
+
+    static void LDStream::ISRfunc(){
+        LDStream::instance->dataStream();
     }
 
 } // namespace LD

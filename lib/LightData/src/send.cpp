@@ -2,11 +2,8 @@
 #include <Arduino.h>
 
 #define TYPE_LEN 1
-#define ISARRAY_LEN 1
 #define ARRAYLEN_LEN 2
 
-#define ISARRAY 'A'
-#define ISNOTARRAY 'N'
 
 enum types{
     sess_start=0,
@@ -21,6 +18,17 @@ enum types{
     _float,
     _double,
     _ldouble,
+    arr_char,
+    arr_uchar,
+    arr_sint,
+    arr_usint,
+    arr_int,
+    arr_uint,
+    arr_llint,
+    arr_ullint,
+    arr_float,
+    arr_double,
+    arr_ldouble,
 };
 
 namespace LD
@@ -28,10 +36,9 @@ namespace LD
 /*sending Functions*/
     void LightData::send(char value)
     {
-        char binary[TYPE_LEN+ISARRAY_LEN+sizeof(value)];
+        char binary[TYPE_LEN+sizeof(value)];
         binary[0] = (char)types::_char;
-        binary[1] = ISNOTARRAY;
-        binary[2] = value;
+        binary[1] = value;
 
     }
 
