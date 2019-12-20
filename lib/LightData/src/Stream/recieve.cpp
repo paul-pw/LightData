@@ -13,7 +13,7 @@ namespace LD
 
     void LDStream::dataStream(){
         //TODO: implement something for the end byte and the start byte
-        unsigned char setnumbits = (micros() - LDStream::oldTime)/(1/LDStream::Speed);
+        unsigned char setnumbits = (micros() - LDStream::oldTime)/(1/LDStream::Speed); //claculates the number of bits that have been set as high or low
         for(unsigned char i=0; i<setnumbits; i++)
         {
 

@@ -1,5 +1,4 @@
 #pragma once
-
 namespace LD{
 
     /* Stream class for the Hardware Protocoll implementation*/
@@ -60,11 +59,13 @@ namespace LD{
         volatile char data;
         volatile unsigned long oldTime;
 
-        static void ISRfunc();
+        static void ISRfunc(){
+            instance->dataStream();
+        }
 
         void dataStream();
 
-        virtual void processData(char data)=0;
+        virtual void processData(char data){};
     /*virtual because we need the inheriting classes to have a definition for this function
     Diese function wird in der derived class ('LightData') deffiniert und wird immer gecalled wenn ein neues byte an input daten vorhanden ist*/
     };

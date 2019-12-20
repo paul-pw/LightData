@@ -5,7 +5,6 @@ namespace LD
 {
 /*setup functions*/
 
-
     void LDStream::setrecieve(unsigned char recievePin)
     {
         LDStream::recievePin=recievePin;
@@ -42,8 +41,5 @@ namespace LD
         }/* TODO: add beginn for transmit */
     }
 
-    static void LDStream::ISRfunc(){
-        LDStream::instance->dataStream();
-    }
 
 } // namespace LD

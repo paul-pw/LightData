@@ -73,7 +73,7 @@ namespace LD{
 
     protected:
         bool _issession;
-        void processData(char Data);
+        virtual void processData(char Data);
     };
 
 

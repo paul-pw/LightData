@@ -36,17 +36,19 @@ namespace LD
 /*sending Functions*/
     void LightData::send(char value)
     {
-        char binary[TYPE_LEN+sizeof(value)];
-        binary[0] = (char)types::_char;
-        binary[1] = value;
-
+        LDStream::send((char)types::_char);
+        LDStream::send(value);
     }
 
+    void LightData::send(unsigned char value)
+    {
+        LDStream::send((char)types::_uchar);
+        LDStream::send(value);
+    }
 
     //function definitions still missing
 
 
-    void LightData::send(unsigned char value){}
     void LightData::send(short int value){}
     void LightData::send(unsigned short int value){}
     void LightData::send(int value){}
