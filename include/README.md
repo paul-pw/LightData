@@ -7,7 +7,7 @@ to be shared between several project source files. You request the use of a
 header file in your project source file (C, C++, etc) located in `src` folder
 by including it, with the C preprocessing directive `#include`.
 
-inour case that is not nescesarry since we write our library by ourselves 
+in our case that is not nescesarry since we write our library by ourselves 
 and thus we dont need anny header files in our project to start with. 
 the Enduser of the library may still use their own Header files for their own functions
 that are unique to their own specific programm
