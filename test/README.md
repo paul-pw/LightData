@@ -2,7 +2,7 @@
 
 ```diff
 - this directory is currently not used since the Hardware is not ready for software testing yet
-- and the software also continuosly changing which makes writing extensive testing programms hard.
+- and the software also continuosly changing which makes coding extensive testing programms impractical.
 ```
 
 Unit Testing is a software testing method by which individual units of
