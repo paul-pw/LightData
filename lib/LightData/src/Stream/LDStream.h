@@ -65,7 +65,7 @@ namespace LD{
 
         void dataStream();
 
-        virtual void processData(char data){};
+        virtual void processData(volatile char data){};
     /*virtual because we need the inheriting classes to have a definition for this function
     Diese function wird in der derived class ('LightData') deffiniert und wird immer gecalled wenn ein neues byte an input daten vorhanden ist*/
     };
