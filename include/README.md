@@ -1,10 +1,16 @@
 
-This directory is intended for project header files.
+# This directory is intended for project header files.
+
 
 A header file is a file containing C declarations and macro definitions
 to be shared between several project source files. You request the use of a
 header file in your project source file (C, C++, etc) located in `src` folder
-by including it, with the C preprocessing directive `#include'.
+by including it, with the C preprocessing directive `#include`.
+
+in our case that is not nescesarry since we write our library by ourselves 
+and thus we dont need anny header files in our project to start with. 
+the Enduser of the library may still use their own Header files for their own functions
+that are unique to their own specific programm
 
 ```src/main.c
 
@@ -25,7 +31,7 @@ new version when next recompiled. The header file eliminates the labor of
 finding and changing all the copies as well as the risk that a failure to
 find one copy will result in inconsistencies within a program.
 
-In C, the usual convention is to give header files names that end with `.h'.
+In C, the usual convention is to give header files names that end with `.h`.
 It is most portable to use only letters, digits, dashes, and underscores in
 header file names, and at most one dot.
 
