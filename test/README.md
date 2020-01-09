@@ -1,5 +1,9 @@
+# PIO Unit Testing and project tests.
 
-This directory is intended for PIO Unit Testing and project tests.
+```diff
+- this directory is currently not used since the Hardware is not ready for software testing yet
+- and the software also continuosly changing which makes writing extensive testing programms hard.
+```
 
 Unit Testing is a software testing method by which individual units of
 source code, sets of one or more MCU program modules together with associated
