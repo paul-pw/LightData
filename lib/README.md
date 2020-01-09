@@ -1,5 +1,10 @@
+# Library
 
-This directory is intended for project specific (private) libraries.
+This directory is intended for project specific (private) libraries. 
+also this is the place where the actual **Light Data** Library lives. 
+for the Libraries to be used in the arduino IDE you need to zip the folder of the library 
+(in the bottom example the folder _Foo_ od _bar_)
+
 PlatformIO will compile them to static libraries and link into executable file.
 
 The source code of each library should be placed in a an own separate directory
@@ -7,6 +12,8 @@ The source code of each library should be placed in a an own separate directory
 
 For example, see a structure of the following two libraries `Foo` and `Bar`:
 
+
+```
 |--lib
 |  |
 |  |--Bar
@@ -15,7 +22,7 @@ For example, see a structure of the following two libraries `Foo` and `Bar`:
 |  |  |--src
 |  |     |- Bar.c
 |  |     |- Bar.h
-|  |  |- library.json (optional, custom build options, etc) https://docs.platformio.org/page/librarymanager/config.html
+|  |  |- library.json (optional, custom build options, etc) https://docs.platformio.org/page/librarymanager/config.html !!for use in the Arduino IDE needed
 |  |
 |  |--Foo
 |  |  |- Foo.c
@@ -26,6 +33,7 @@ For example, see a structure of the following two libraries `Foo` and `Bar`:
 |- platformio.ini
 |--src
    |- main.c
+```
 
 and a contents of `src/main.c`:
 ```
