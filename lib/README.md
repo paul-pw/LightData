@@ -1,12 +1,17 @@
 # Library
 
 This directory is intended for project specific (private) libraries. 
-also this is the place where the actual **Light Data** Library lives. 
-for the Libraries to be used in the arduino IDE you need to zip the folder of the library 
-(in the bottom example the folder _Foo_ od _bar_)
 
-PlatformIO will compile them to static libraries and link into executable file.
+also this is the place where the **Light Data** Library lives. 
+for the Libraries to be used in the **Arduino IDE** you need to zip the 
+folder of the library
+(in the bottom example the folder _Foo_ or _bar_) and then in the Arduino 
+IDE included over `Sketch/include Libraries/add .ZIP Library` found, added 
+and then with `Sketch/include Libraries/LightData` included
+_an already zipped and compiling version of the library can be found 
+as an release on github_
 
+**PlatformIO** will compile them to static libraries and link into executable file. <br>
 The source code of each library should be placed in a an own separate directory
 ("lib/your_library_name/[here are source files]").
 

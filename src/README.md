@@ -24,4 +24,4 @@ void loop()
 
 }
 ```
-_if this doesnt work just look at the main file, you should be able to find out what must be used in the current version of the Library_
+_if this doesnt work just look at the main file, you should be able to find out what must be used in the current version of the Library code_
