@@ -1,7 +1,9 @@
 # PIO Unit Testing and project tests.
 
+`LDR_Measurements.ino` this file was used to get a Light - Resistance curve of the LDR to decide if it ca be used in this Project since the ISR needs a clear High-Low input and cannot work with analog signals
+
 ```diff
-- this directory is currently not used since the Hardware is not ready for software testing yet
+- this directory is currently not used to full extend since the Hardware is not ready for software testing yet
 - and the software also continuosly changing which makes coding extensive testing programms impractical.
 ```
 
