@@ -1,6 +1,6 @@
 # LightData
 **Abstract:**
-_new Data Protocol for use in arduino, especialy targeted for the use with fiber optics cables_
+_new Data Protocol for use in arduino, especialy targeted for the use with fiber optics cables_ 
 
 ## the API
 for the Library to compile you must include these lines of code in your source file
