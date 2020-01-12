@@ -51,8 +51,8 @@ namespace LD{
             id(id_counter++){}
 
         int content;
-        int id;
-        static int id_counter;
+        short int id;
+        static short int id_counter;
     };
 
     
