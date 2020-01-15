@@ -18,8 +18,7 @@ in the `setup` part of the main arduino Programm
 
 the following functions can then be used:
 * `.send(/*input here*/)` put anny data in there and it will be send over the fiberoptics cable (_take a look at the code to see what you can **actualy** send_)
-* `.getData()` dumps out the last recieved Data as an `LD::data` object
-* `.wait_for_input()` will just wait until the next input occures
+* `.getData()` dumps out the last recieved Data
 ```diff
 - more functions are found in the code but they will not yet work Properly since they are not finnished yet
 ! also some more functions are not named here since they are only nescesary for setup and can be easily understood by looking at the code
