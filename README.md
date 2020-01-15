@@ -8,7 +8,6 @@ for the Library to compile you must include these lines of code in your source f
 #include <LightData.h>
 LD::LightData ld(); //any other cunstructor of LightData can also be used
 LD::LDStream* LD::LDStream::instance = &ld;
-int LD::Session_var::id_counter=0; 
 ```
 and for the Library to _work_ you must include 
 ```c++
