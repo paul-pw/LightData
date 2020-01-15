@@ -58,21 +58,18 @@ namespace LD{
         LightData(long Speed):
             LDStream(Speed),
             recieve_charIndex(0),
-            recieve_arraysintIndex(0),
-            _issession(false){};
+            recieve_arraysintIndex(0){};
 
 
         LightData(unsigned char recievePin,unsigned char transmitPin, long Speed):
             LDStream(recievePin,transmitPin,Speed),
             recieve_charIndex(0),
-            recieve_arraysintIndex(0),
-            _issession(false){};
+            recieve_arraysintIndex(0){};
 
         LightData(unsigned char recievePin,unsigned char transmitPin):
             LDStream(recievePin,transmitPin),
             recieve_charIndex(0),
-            recieve_arraysintIndex(0),
-            _issession(false){};
+            recieve_arraysintIndex(0)){};
 
     /*sending Functions*/
 
@@ -102,21 +99,10 @@ namespace LD{
         void send(long double value[],unsigned short int length /*Length can be evaluated with ARRAY_SIZE(arr)*/);
 
 
-        void session_start(Session_var[]); /*this needs to get some kind of struct or something, so that it knows all the nescesary variables that get send every so often*/
-        void session_update(Session_var[]); /*when this is called all session variables are forced to get updated, 
-                                else the variables get updatet when the programm recognizes a value change in these variables*/
-        void session_stop();
-
 
     /*recieving functions*/
 
-        void wait_for_input();
-        void wait_for_session_start();
-        bool issession(){   return _issession;  }
-
-        LD::data getData();/****this also needs something where it can dump the data to*******
-                        (1): this function dups out all the data send in the last stream
-                        (2): this function also dumps out all the session information, specifications & data if a session is started*/
+        LD::data getData();/* this function dups out all the data send in the last stream*/
 
 
     protected:
@@ -124,8 +110,6 @@ namespace LD{
         volatile LD::data L2_data; //L2 because now the incoming data is gets further processed
         volatile unsigned int recieve_charIndex; //the number of the recieved char (when the length of the message is known this gets set and then countet down)
         volatile unsigned char recieve_arraysintIndex;
-        bool _issession;
-        Session_var* session_vars;
         virtual void processData(volatile char Data);
         LD::data constructData(){LD::data tmp; return tmp;};
     };

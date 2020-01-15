@@ -9,7 +9,6 @@ namespace LD
     {
         
     }
-    void LightData::wait_for_session_start(){}
 
     data LightData::getData()
     {

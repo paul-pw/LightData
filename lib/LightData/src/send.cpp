@@ -234,8 +234,4 @@ namespace LD
     void LightData::send(float value[],unsigned short int length){}
     void LightData::send(double value[],unsigned short int length){}
     void LightData::send(long double value[],unsigned short int length){}
-
-    void session_start(Session_var[]){}
-    void session_update(Session_var[]){}
-    void session_stop(){}
 } // namespace LD
