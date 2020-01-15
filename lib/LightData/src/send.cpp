@@ -6,6 +6,10 @@
 namespace LD
 {
 /*sending Functions*/
+    /************************
+     * al of these functions first send the type of the variable as the first byte
+     *  and then Data as the next bytes
+     ************************/
     void LightData::send(char value)
     {
         LDStream::send((char)types::_char); //casting operation
@@ -80,6 +84,11 @@ namespace LD
     
 
     //array sending functions
+    /************************
+     * al of these functions first send the type of the variable as the first byte
+     * then two bytes as Array length
+     * and then Data as the next bytes
+     ************************/
 
     void LightData::send(char value[],unsigned short int length)
     {
@@ -227,6 +236,9 @@ namespace LD
     }
 
     //function definitions still missing
+    /*** these function deffinitions are not ready since 
+     * turning them into bytes is complicated 
+     * and we havend found a way to do so ...Yet***/
     void LightData::send(float value){}
     void LightData::send(double value){}
     void LightData::send(long double value){}

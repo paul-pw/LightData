@@ -5,6 +5,7 @@ namespace LD
 {
 /*setup functions*/
 
+/*** these functions are explained in LDStream.h***/
     void LDStream::setrecieve(unsigned char recievePin)
     {
         LDStream::recievePin=recievePin;
@@ -27,9 +28,9 @@ namespace LD
         if (LDStream::recieve)
         {
             pinMode(LDStream::recievePin, CHANGE);
+            //deklares the ISR
             attachInterrupt(digitalPinToInterrupt(LDStream::recievePin), LDStream::ISRfunc , CHANGE);
         }
-        /* TODO: add beginn for transmit */
     }
 
     void LDStream::beginn(long Speed){
@@ -37,8 +38,9 @@ namespace LD
         if (LDStream::recieve)
         {
             pinMode(LDStream::recievePin, CHANGE);
+            //deklares the ISR
             attachInterrupt(digitalPinToInterrupt(LDStream::recievePin), LDStream::ISRfunc , CHANGE);
-        }/* TODO: add beginn for transmit */
+        }
     }
 
 

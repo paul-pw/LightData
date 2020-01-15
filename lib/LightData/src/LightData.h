@@ -5,7 +5,7 @@
 
 namespace LD{
 
-
+    //defines all the types that can be used to send data (basicaly just assigns every type a number 0x00 - 0xe6)
     enum types{
         empty,
         sess_start,
@@ -33,6 +33,7 @@ namespace LD{
         arr_ldouble,
     };
 
+    //this class holds all the data recieved
     class data
     {
     public:
@@ -47,14 +48,14 @@ namespace LD{
 
     
 
-    /* for now, i'm not gonna make two seperate classes for sending and recieving, since in the future I want this to be able to do both in one class on one Arduino*/
-    /*LightData class for software protocoll implementation*/
+    /* only one class for beth sending and recieving cause in the future one arduino should be able to do both (send and recieve) */
+    /*LightData class for high level (Bytewise) protocoll implementation*/
     class LightData : public LDStream
     {
     public:
 
     /*setup functions*/
-
+        //constructor functions (reference the LDStream constructor)
         LightData(long Speed):
             LDStream(Speed),
             recieve_charIndex(0),
@@ -73,7 +74,7 @@ namespace LD{
 
     /*sending Functions*/
 
-        //this function is written so that it can accept every data type needed that this function accepts any variable type (thus creating a new function for every new type)
+        //these functions are written so that they can accept every data type (thus creating a new function for type)
         void send(char value);
         void send(unsigned char value);
         void send(short int value);
@@ -111,7 +112,6 @@ namespace LD{
         volatile unsigned int recieve_charIndex; //the number of the recieved char (when the length of the message is known this gets set and then countet down)
         volatile unsigned char recieve_arraysintIndex;
         virtual void processData(volatile char Data);
-        LD::data constructData(){LD::data tmp; return tmp;};
     };
 
 

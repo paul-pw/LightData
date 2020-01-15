@@ -5,10 +5,6 @@ namespace LD
 /*recieving functions*/
 
     //function definitions still missing
-    void LightData::wait_for_input()
-    {
-        
-    }
 
     data LightData::getData()
     {
@@ -25,8 +21,9 @@ namespace LD
         {
             L2_buffer.type = (types)Data;
         }
+        /*check if its anny array*/
         else if((L2_buffer.type==types::arr_char)||(L2_buffer.type==types::arr_double)||(L2_buffer.type==types::arr_float)||(L2_buffer.type==types::arr_int)||(L2_buffer.type==types::arr_ldouble)||(L2_buffer.type==types::arr_llint)||(L2_buffer.type==types::arr_sint)||(L2_buffer.type==types::arr_uchar)||(L2_buffer.type==types::arr_uint)||(L2_buffer.type==types::arr_ullint)||(L2_buffer.type==types::arr_usint))
-        {/*check if its anny array*/
+        {
             if (recieve_arraysintIndex<2)
             {
                 L2_buffer.length |= Data;
