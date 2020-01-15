@@ -120,7 +120,7 @@ namespace LD{
 
 
     /*recieving functions*/
-        char* getData_charArray(){return (char*)L2_data;}/*this function dups out all the data send in the last stream*/
+        char* getData_charArray(unsigned int& length){return (char*)L2_data;}/*this function dups out all the data send in the last stream*/
         
         bool getData(char &Buffer);
         bool getData(unsigned char &Buffer);
