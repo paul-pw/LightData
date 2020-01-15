@@ -58,19 +58,37 @@ namespace LD{
         //constructor functions (reference the LDStream constructor)
         LightData(long Speed):
             LDStream(Speed),
-            recieve_charIndex(0),
-            recieve_arraysintIndex(0){};
+            L2_buffer(nullptr),
+            L2_buffer_length(0),
+            L2_buffer_index(0),
+            L2_data(nullptr),
+            L2_data_length(0),
+            L2_buffer_type(types::empty),
+            L2_buffer_arraylength(0),
+            L2_buffer_arraylength_byteindex(0){};
 
 
         LightData(unsigned char recievePin,unsigned char transmitPin, long Speed):
             LDStream(recievePin,transmitPin,Speed),
-            recieve_charIndex(0),
-            recieve_arraysintIndex(0){};
+            L2_buffer(nullptr),
+            L2_buffer_length(0),
+            L2_buffer_index(0),
+            L2_data(nullptr),
+            L2_data_length(0),
+            L2_buffer_type(types::empty),
+            L2_buffer_arraylength(0),
+            L2_buffer_arraylength_byteindex(0){};
 
         LightData(unsigned char recievePin,unsigned char transmitPin):
             LDStream(recievePin,transmitPin),
-            recieve_charIndex(0),
-            recieve_arraysintIndex(0){};
+            L2_buffer(nullptr),
+            L2_buffer_length(0),
+            L2_buffer_index(0),
+            L2_data(nullptr),
+            L2_data_length(0),
+            L2_buffer_type(types::empty),
+            L2_buffer_arraylength(0),
+            L2_buffer_arraylength_byteindex(0){};
 
     /*sending Functions*/
 
@@ -102,15 +120,43 @@ namespace LD{
 
 
     /*recieving functions*/
+        char* getData_charArray(){return (char*)L2_data;}/*this function dups out all the data send in the last stream*/
+        
+        bool getData(char &Buffer);
+        bool getData(unsigned char &Buffer);
+        bool getData(short int &Buffer);
+        bool getData(unsigned short int &Buffer);
+        bool getData(int &Buffer);
+        bool getData(unsigned int &Buffer);
+        bool getData(long long int &Buffer);
+        bool getData(unsigned long long int &Buffer);
+        bool getData(float &Buffer);
+        bool getData(double &Buffer);
+        bool getData(long double &Buffer);
 
-        LD::data getData();/* this function dups out all the data send in the last stream*/
+        bool getData(char* &Buffer,unsigned short int &length);
+        bool getData(unsigned char* &Buffer,unsigned short int &length);
+        bool getData(short int* &Buffer,unsigned short int &length);
+        bool getData(unsigned short int* &Buffer,unsigned short int &length);
+        bool getData(int* &Buffer,unsigned short int &length);
+        bool getData(unsigned int* &Buffer,unsigned short int &length);
+        bool getData(long long int* &Buffer,unsigned short int &length);
+        bool getData(unsigned long long int* &Buffer,unsigned short int &length);
+        bool getData(float* &Buffer,unsigned short int &length);
+        bool getData(double* &Buffer,unsigned short int &length);
+        bool getData(long double* &Buffer,unsigned short int &length);
 
 
     protected:
-        volatile LD::data L2_buffer;
-        volatile LD::data L2_data; //L2 because now the incoming data is gets further processed
-        volatile unsigned int recieve_charIndex; //the number of the recieved char (when the length of the message is known this gets set and then countet down)
-        volatile unsigned char recieve_arraysintIndex;
+        volatile char* L2_buffer;//L2 because now the incoming data is gets further processed
+        volatile unsigned int L2_buffer_length;
+        volatile unsigned int L2_buffer_index;
+        volatile char* L2_data;
+        volatile unsigned int L2_data_length;
+
+        volatile types L2_buffer_type;
+        volatile unsigned short int L2_buffer_arraylength;
+        volatile unsigned char L2_buffer_arraylength_byteindex;
         virtual void processData(volatile char Data);
     };
 
