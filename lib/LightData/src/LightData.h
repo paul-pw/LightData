@@ -44,16 +44,6 @@ namespace LD{
         types type;
         unsigned short length;
     };
-    class Session_var
-    {
-    public:
-        Session_var():
-            id(id_counter++){}
-
-        int content;
-        short int id;
-        static short int id_counter;
-    };
 
     
 
