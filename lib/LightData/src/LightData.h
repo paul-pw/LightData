@@ -70,7 +70,7 @@ namespace LD{
         LightData(unsigned char recievePin,unsigned char transmitPin):
             LDStream(recievePin,transmitPin),
             recieve_charIndex(0),
-            recieve_arraysintIndex(0)){};
+            recieve_arraysintIndex(0){};
 
     /*sending Functions*/
 
