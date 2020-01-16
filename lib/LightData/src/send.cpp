@@ -1,8 +1,6 @@
 #include "LightData.h"
 #include <Arduino.h>
 
-#define ARRAYLEN_LEN 2
-
 namespace LD
 {
 /*sending Functions*/
